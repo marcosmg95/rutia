@@ -14,18 +14,18 @@ import "./globals.css";
 // });
 
 export const metadata: Metadata = {
-  title: "rutIA",
-  description: "App per a genrar rutes per Catalunya",
+	title: "rutIA",
+	description: "App per a genrar rutes per Catalunya",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return (
-    <html lang="cat">
-      <body 
-      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="cat">
+			<body
+			// className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
+				{children}
+			</body>
+		</html>
+	);
 }

@@ -38,7 +38,7 @@ button.primary, .btn.primary {
   border-radius: 0.375rem;
 }
 
-.map-container {
+/* .map-container {
   -ms-overflow-style: none;
   scrollbar-width: none;
 
@@ -52,4 +52,8 @@ button.primary, .btn.primary {
       z-index: 9999;
     }
   }
+} */
+
+svg path:focus {
+  outline: none;
 }
