@@ -1,0 +1,9 @@
+torch==2.4.1
+transformers==4.46.1
+sentencepiece==0.2.0
+accelerate==1.0.1
+gradio==4.44.1
+protobuf
+weaviate-client
+sentence-transformers
+aiohttp==3.10.10
