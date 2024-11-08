@@ -2,26 +2,37 @@ from typing import Optional
 from fastapi import FastAPI
 import uvicorn
 
-from backend.indexers import store_data
-from backend.retrievers import retrieve_route
+from backend.indexers import store_data_old
+from backend.retrievers.retrieve_data_by_field import retrieve_data_by_field
 
 app = FastAPI()
 
-@app.get("/get_day/{day}")
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/field/{field}")
 def get_data(
-    day: str,
-    museus: Optional[int] = None,
-    arquitectura: Optional[int] = None,
-    latitud: Optional[float] = None,
-    longitud: Optional[float] = None
+    field: str,
+    latitude: float,
+    longitude: float
 ):
-    return {
-        "day": day,
-        "museus": museus,
-        "arquitectura": arquitectura,
-        "latitud": latitud,
-        "longitud": longitud
-    }
+    # Process the field value as before
+    if field == "history":
+        field = "Història i memòria"
+    elif field == "art":
+        field = "Arts visuals"
+    elif field == "science":
+        field = "Ciència"
+    else:
+        raise NotImplementedError("Field not implemented")
+    
+    # You can now use `limit` and `sort` in your logic
+    result = retrieve_data_by_field(field, latitude, longitude)
+
+    return result
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: str = None):
