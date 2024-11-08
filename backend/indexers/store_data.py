@@ -5,11 +5,11 @@ import weaviate.classes as wvc
 from weaviate.classes.config import Property, DataType
 from weaviate.classes.data import GeoCoordinate
 
-from indexers.activities import request_today_activities
-from indexers.museums import request_today_museum_events
-from indexers.nature import request_today_nature_events
-from indexers.tourismus import request_today_tourismus
-from indexers.semantics import request_sentence_embeddings
+from backend.indexers.activities import request_today_activities
+from backend.indexers.museums import request_today_museum_events
+from backend.indexers.nature import request_today_nature_events
+from backend.indexers.tourismus import request_today_tourismus
+from backend.indexers.semantics import request_sentence_embeddings
 
 
 COLLECTION_NAME = "Events"

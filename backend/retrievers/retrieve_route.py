@@ -4,7 +4,7 @@ import weaviate
 from weaviate.classes.data import GeoCoordinate
 from weaviate.classes.query import MetadataQuery, Filter
 
-from indexers.semantics import request_sentence_embeddings
+from backend.indexers.semantics import request_sentence_embeddings
 
 COLLECTION_NAME = "Events"
 USER_MESSAGE = "Activitat per a nens"

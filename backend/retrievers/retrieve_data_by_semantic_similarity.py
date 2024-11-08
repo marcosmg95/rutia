@@ -2,7 +2,7 @@ import weaviate
 import weaviate.classes as wvc
 from weaviate.classes.data import GeoCoordinate
 from weaviate.classes.query import Filter, GeoCoordinate
-from indexers.semantics import request_sentence_embeddings
+from backend.indexers.semantics import request_sentence_embeddings
 
 
 def retrieve_data_by_semantic_similarity(sentence: str):
