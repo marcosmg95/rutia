@@ -8,7 +8,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import UpdateCenter from "./updateCenter";
 
 export default function Mapa() {
-  const { step, center, markers } = useMenuContext();
+  const { center, markers } = useMenuContext();
 
 
   const icon = new Icon({
@@ -20,7 +20,7 @@ export default function Mapa() {
   })
 
   return (
-    <MapContainer center={center} zoom={13} scrollWheelZoom={true} className="map">
+    <MapContainer center={center.c} zoom={13} scrollWheelZoom={true} className="map">
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

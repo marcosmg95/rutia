@@ -35,12 +35,12 @@ export function AudioRecorder({ onRecordingComplete }) {
   };
 
   return (
-    <div>
+    <div className='mb-6 w-full'>
       <button
-        className="btn check w-full active"
+        className={`btn check w-full ${isRecording ? 'active' : ''}`}
         onClick={isRecording ? stopRecording : startRecording}
       >
-        {isRecording ? 'Deixar de grabar' : 'Començar a grabar'}
+        {isRecording ? 'Deixar de grabar' : 'Comença a gravar un àudio'}
       </button>
     </div>
   );

@@ -16,7 +16,7 @@ export default function Menu() {
 
   return (
     <div className="menu">
-      <div className="step-circles h-1/6 flex">
+      <div className="step-circles h-1/6 flex py-3">
         {steps.map(({ key }, i) => (
           <div
             key={key}
@@ -27,13 +27,14 @@ export default function Menu() {
           </div>
         ))}
       </div>
-      <div className="h-5/6 py-6 px-10 w-full grow flex flex-col">
+      <div className="max-h-full px-10 w-full grow shrink overflow-y-auto flex flex-col">
         {steps.find((x) => x.key === step)?.view}
+        <footer className="pt-6 pb-1 w-full">
+          <div>Copyright © 2024 CC Lab</div>
+          <div className="atribucio">Icones dissenyades per <a href="https://smashicons.com/" title="Smashicons"> Smashicons </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
+        </footer>
       </div>
-      <footer className="mt-2">
-        <div>Copyright © 2024 CC Lab</div>
-        <div className="atribucio"> Iconos diseñados por <a href="https://smashicons.com/" title="Smashicons"> Smashicons </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
-      </footer>
+
     </div>
   )
 }

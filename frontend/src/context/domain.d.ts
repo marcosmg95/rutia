@@ -13,10 +13,12 @@ export interface DadesEntrada {
 }
 
 export interface Marcador {
+  code: number
   localitzacio: Coordenades
   nom: string
   adreca: string
   descripcio: string
+  ambit: string
 }
 
 export interface ResultatAPI {
