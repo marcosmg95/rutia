@@ -31,8 +31,8 @@ def read_root():
 
 @app.get("/field")
 def get_data(
-    latitude: float,
-    longitude: float,
+    latitude: float = None,
+    longitude: float = None,
     history: int = 0,
     art: int = 0,
     science: int = 0,

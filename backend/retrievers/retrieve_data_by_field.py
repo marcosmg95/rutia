@@ -4,7 +4,7 @@ from weaviate.classes.query import Filter, GeoCoordinate
 from datetime import datetime, timezone
 
 
-def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date: str = None):
+def retrieve_data_by_field(fields: list, latitude: float = None, longitude: float = None, date: str = None):
     COLLECTION_NAME = "Events"
 
     client = weaviate.connect_to_local(port=9000)
@@ -18,7 +18,7 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date
         else:
             field_filter |= Filter.by_property("field").equal(field)
 
-    if date:
+    if date and date != "":
         # Parse the string into a datetime object
         dt = datetime.strptime(date, '%Y-%m-%d')
 
@@ -31,21 +31,42 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date
         date_filter &= Filter.by_property("date_end").less_or_equal(
             formatted
         )
+
+        #  # Parse the string into a datetime object
+        dt = datetime.strptime("1337-11-03", '%Y-%m-%d')
+
+        # Convert to RFC 3339 format with UTC (Z)
+        formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
+        date_filter |= Filter.by_property("date_start").equal(formatted)
+
     else:
-        date_filter = None
+        # Parse the string into a datetime object
+        dt = datetime.strptime("1337-11-03", '%Y-%m-%d')
+
+        # Convert to RFC 3339 format with UTC (Z)
+        formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
+        date_filter = Filter.by_property("date_start").equal(formatted)
+
+    if latitude and longitude:
+        # Combine the field filter with the location filter
+        geo_filter = Filter.by_property("location").within_geo_range(
+            coordinate=GeoCoordinate(
+                latitude=latitude,
+                longitude=longitude
+            ),
+            distance=500000  # In meters
+        )
+    else:
+        geo_filter = None
 
     # Combine the field filter with the location filter
     near_activities = test_collection.query.fetch_objects(
         filters=(
             field_filter &
             date_filter &
-            Filter.by_property("location").within_geo_range(
-                coordinate=GeoCoordinate(
-                    latitude=latitude,
-                    longitude=longitude
-                ),
-                distance=500000000000000000000000 # In meters
-            )
+            geo_filter
         ),
         limit=10
     )
@@ -63,12 +84,14 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date
             "title": o.properties['title'],
             "location": o.properties['location'],
             "description": o.properties['description'],
-            "code": o.properties['code']
+            "code": o.properties['code'],
+            "date": o.properties['date_start']
         })
 
     client.close()
 
     return result
+
 
 if __name__ == "__main__":
     retrieve_data_by_field("Història i memòria", 41.40252955, 2.188065206)
