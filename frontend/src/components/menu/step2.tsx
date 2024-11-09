@@ -41,9 +41,20 @@ export default function Step2() {
         const marcadors: Marcador[] = lastResults.map((r: ResultatAPI) => {
           let field;
 
+          if (r.field === "Events") field = ambits.events;
           if (r.field === "Ciència") field = ambits.science;
           if (r.field === "Arts visuals") field = ambits.art;
           if (r.field === "Història i memòria") field = ambits.history;
+          let inici;
+          let fi;
+          const fake = "1337-11-03T00:00:00+00:00";
+          console.log(' fake')
+
+          if (r.start_date != fake && r.end_date != fake) {
+            console.log('not fake')
+            inici = r.start_date.substring(0, 10);
+            fi = r.end_date.substring(0, 10);
+          }
 
           return {
             code: r.code,
@@ -51,6 +62,8 @@ export default function Step2() {
             adreca: '',
             descripcio: r.description,
             ambit: field || '',
+            inici: inici,
+            fi: fi,
             localitzacio: {
               lat: r.location?.latitude,
               lng: r.location?.longitude,

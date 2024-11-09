@@ -1,6 +1,7 @@
 import { useMenuContext } from "@/context/menuContext"
 import Loading from "../layout/loading";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function Step3() {
   const { markers, setMarkers, setCenter, finishLoading } = useMenuContext();
@@ -54,11 +55,20 @@ export default function Step3() {
     <>
       {finishLoading
         ? markers.map((marker) => (
-          <div key={marker.code} className="flex flex-col card py-2">
+          <div key={marker.code} className="flex flex-col card py-2 h-full">
             <p className="text-lg font-bold">{marker.nom}</p>
             <p>{marker.descripcio}</p>
             <p className="soft-text mb-2 text-sm capitalize">{marker.adreca}</p>
-            {marker.ambit && <div className="ambit self-start py-0.5 px-2.5 text-sm">{marker.ambit}</div>}
+            <div className="flex gap-2 mb-3">
+              {(marker.inici && marker.fi) && (
+                <div className="calendar self-start py-0.5 px-2.5 ps-2 text-sm flex">
+                  <Image src={'/events.svg'} width={16} height={16} alt="Calendar event icon" />
+                  <span className="ms-2">{marker.inici !== marker.fi ? `${marker.inici} -  ${marker.fi}` : marker.inici}</span>
+
+                </div>
+              )}
+              {marker.ambit && <div className="ambit self-start py-0.5 px-2.5 text-sm">{marker.ambit}</div>}
+            </div>
             <button
               className="btn primary self-end text-sm mb-0.5"
               onClick={() => setCenter({ c: marker.localitzacio, pin: true })}>

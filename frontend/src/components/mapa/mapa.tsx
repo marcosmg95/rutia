@@ -8,8 +8,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import UpdateCenter from "./updateCenter";
 
 export default function Mapa() {
-  const { center, markers, finishLoading } = useMenuContext();
-
+  const { center, markers } = useMenuContext();
 
   const icon = new Icon({
     iconUrl: './pin.png',
@@ -25,13 +24,14 @@ export default function Mapa() {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      {finishLoading && markers?.map(({ nom, localitzacio }) => (
-        <Marker key={nom} position={localitzacio} icon={icon}>
-          {/* <Popup>
+      {//finishLoading &&
+        markers?.map(({ nom, localitzacio }) => (
+          <Marker key={nom} position={localitzacio} icon={icon}>
+            {/* <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup> */}
-        </Marker>
-      ))}
+          </Marker>
+        ))}
       <UpdateCenter />
     </MapContainer>
   )

@@ -15,8 +15,17 @@ export default function Home() {
       <div className="home-content">
         <div className="h-full flex flex-col place-content-center">
           <h1 className="title" style={{ color: "var(--color-1)", fontSize: "16rem" }}>rutIA</h1>
-          <div className='image flex'>
-            {/* <Image></Image> */}
+          <div className='image flex mx-auto'>
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Image
+                key={i}
+                src="/pin.png"
+                width={35}
+                height={35}
+                alt="Dotted line simulating route"
+                className={`pin-${i} object-contain absolute`}
+              />
+            ))}
             <Image
               src="/Yellow Dotted Lines.svg"
               width={600}

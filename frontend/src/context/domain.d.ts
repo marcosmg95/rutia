@@ -19,6 +19,8 @@ export interface Marcador {
   adreca: string
   descripcio: string
   ambit: string
+  inici?: string
+  fi?: string
 }
 
 export interface ResultatAPI {
@@ -26,6 +28,8 @@ export interface ResultatAPI {
   field: string
   title: string
   description: string
+  end_date: string
+  start_date: string
   location: {
     latitude: number
     longitude: number

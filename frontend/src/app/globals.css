@@ -178,6 +178,11 @@ label {
     background-color: var(--color-4);
   }
 
+  .calendar {
+    background-color: var(--color-1);
+    color: var(--foreground);
+  }
+
   &:last-of-type {
     border-bottom: none;
   }
@@ -211,6 +216,32 @@ footer {
   .image {
     max-height: 25vh;
     place-content: center;
+    position: relative;
+
+    .pin-0 {
+      top: 39%;
+      left: 4.5%;
+    }
+
+    .pin-1 {
+      top: 21%;
+      left: 22.5%;
+    }
+
+    .pin-2 {
+      top: 32%;
+      left: 46%;
+    }
+
+    .pin-3 {
+      top: 63%;
+      left: 65%;
+    }
+
+    .pin-4 {
+      top: 5.5%;
+      left: 89.5%;
+    }
   }
 }
 
