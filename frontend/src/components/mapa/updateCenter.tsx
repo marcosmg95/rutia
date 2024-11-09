@@ -7,7 +7,7 @@ export default function UpdateCenter() {
 	const map = useMap();
 
 	useEffect(() => {
-		map.setView(center, map.getZoom());
+		map.setView(center.c, (center.pin ? 20 : 13));
 	}, [center, map]);
 
 	return null;

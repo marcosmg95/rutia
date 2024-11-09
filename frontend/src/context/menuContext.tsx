@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useState } from "react";
-import { Coordenades, DadesEntrada, Marcador } from "./domain";
+import { Coordenades, DadesEntrada, Marcador, ResultatAPI } from "./domain";
 
 interface MenuContextType {
   data: DadesEntrada
@@ -11,27 +11,28 @@ interface MenuContextType {
   nextStep: () => void
   prevStep: () => void
   ambits: { [key: string]: string }
-  center: Coordenades
-  setCenter: (c: Coordenades) => void
+  center: { c: Coordenades, pin: boolean }
+  setCenter: (c: { c: Coordenades, pin: boolean }) => void
   markers: Marcador[]
   setMarkers: (m: Marcador[]) => void
-  firstResults: any
-  setFirstResults: (a: any) => void
+  firstResults?: ResultatAPI[]
+  setFirstResults: (a: ResultatAPI[]) => void
 }
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
 export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode }>) => {
-  const [center, setCenter] = useState<Coordenades>({ lat: 41.3640153, lng: 2.1571719 });
-  const [data, setData] = useState<DadesEntrada>({ dia: '', ciutat: '', context: '', tipus: { art: false, history: false, science: false } });
+  const [center, setCenter] = useState<{ c: Coordenades, pin: boolean }>({ c: { lat: 41.3640153, lng: 2.1571719 }, pin: false });
+  const [data, setData] = useState<DadesEntrada>({ dia: '', ciutat: '', context: '', tipus: { art: false, history: false, science: false, events: false } });
   const [markers, setMarkers] = useState<Marcador[]>([]);
   const [step, setStep] = useState<number>(0);
-  const [firstResults, setFirstResults] = useState()
+  const [firstResults, setFirstResults] = useState<ResultatAPI[]>();
 
   const ambits: { [key: string]: string } = {
     art: "art",
     science: "ciència",
     history: "historia",
+    events: "esdeveniments"
   }
 
   const nextStep = () => {

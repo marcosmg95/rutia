@@ -5,10 +5,10 @@ import { useState } from "react";
 export default function Step1() {
   const { data, setData, nextStep, ambits, setMarkers, center, setCenter, setFirstResults } = useMenuContext();
   const [useCurrentPosition, setUseCurrentPosition] = useState<boolean>(false);
-  // const today = new Date().toISOString().substring(0, 10);
+  const today = new Date().toISOString().substring(0, 10);
 
   const updateCoordinates = (pos: GeolocationPosition) => {
-    setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+    setCenter({ c: { lat: pos.coords.latitude, lng: pos.coords.longitude }, pin: false });
     console.log("update coords", { lat: pos.coords.latitude, lng: pos.coords.longitude });
   };
 
@@ -26,12 +26,11 @@ export default function Step1() {
       };
 
       navigator.geolocation.getCurrentPosition(updateCoordinates, showError, options);
-
     }
   };
 
   const getCityCoordinates = async (): Promise<Coordenades | null> => {
-    const url = `https://nominatim.openstreetmap.org/search?city=${data.ciutat}&format=jsonv2`
+    const url = `https://nominatim.openstreetmap.org/search?city=${data.ciutat}&state=Catalunya&country=Espanya&format=jsonv2`
     const result = await fetch(url, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', }
@@ -47,7 +46,7 @@ export default function Step1() {
         lat: parseFloat(response[0]["lat"]),
         lng: parseFloat(response[0]["lon"]),
       };
-      setCenter(coords);
+      setCenter({ c: coords, pin: false });
       return coords;
     }).catch((error) => {
       console.error('error', error);
@@ -59,7 +58,7 @@ export default function Step1() {
 
   const getFirstResults = async (coords: Coordenades) => {
     const fields = Object.keys(data.tipus).map((key) => `${key}=${data.tipus[key] ? '1' : '0'}`).join('&')
-    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}field?${fields}&latitude=${coords.lat}&longitude=${coords.lng}`
+    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}field?${fields}&latitude=${coords.lat}&longitude=${coords.lng}&date=${data.dia}`
 
     fetch(url, {
       method: 'GET',
@@ -103,7 +102,7 @@ export default function Step1() {
 
   const clickContinue = async () => {
     if (useCurrentPosition) {
-      await getFirstResults(center);
+      await getFirstResults(center.c);
     } else if (data.ciutat !== '') {
       await getCityCoordinates().then((coords) => {
         if (coords)
@@ -115,7 +114,7 @@ export default function Step1() {
 
   return (
     <>
-      {/* <div className="form-group mb-5">
+      <div className="form-group mb-5">
         <label className="px-4 py-3">Tria un dia:</label>
         <input
           type="date"
@@ -125,7 +124,7 @@ export default function Step1() {
           min={today}
           onChange={(e) => setData({ ...data, dia: e.target.value })}
         />
-      </div> */}
+      </div>
 
       <div className="flex flex-col items-center mb-3">
         <div className="form-group w-full">
@@ -140,7 +139,6 @@ export default function Step1() {
           />
         </div>
         <span className="mt-1 mb-2">o</span>
-
         <button
           className={`btn check w-full ${useCurrentPosition ? 'active' : ''}`}
           onClick={getCoordinates}
@@ -150,7 +148,7 @@ export default function Step1() {
       </div>
 
       <label className="mt-3 mb-2">Tria els àmbits:</label>
-      <div className="flex gap-3 mb-2">
+      <div className="flex gap-3 mb-6">
         {Object.keys(data.tipus).map((key) => (
           <button
             key={key}

@@ -47,12 +47,12 @@ body {
 .menu {
   grid-area: menu;
   background: var(--color-5);
-
   display: flex;
   flex-direction: column;
   place-content: center;
-
   align-items: center;
+  height: 100vh;
+  max-height: 100vh;
 }
 
 .step-circles {
@@ -74,11 +74,6 @@ body {
 
   &.current {
     background-color: var(--color-4);
-
-    &:last-child {
-      background-color: var(--color-1);
-      color: var(--foreground);
-    }
   }
 
   &.completed {
@@ -167,11 +162,29 @@ label {
     color: var(--light-color);
     background-color: var(--color-5);
     color-scheme: dark;
+    border-radius: 0;
   }
 
   &:focus-within {
     border-color: var(--color-2);
   }
+}
+
+.card {
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--color-5), var(--light-color) 65%);
+
+  .ambit {
+    background-color: var(--color-4);
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.soft-text {
+  color: color-mix(in srgb, var(--color-5), var(--light-color) 80%);
 }
 
 footer {
