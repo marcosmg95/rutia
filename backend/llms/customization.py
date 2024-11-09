@@ -8,15 +8,14 @@ import requests
 import os
 from dotenv import load_dotenv
 from transformers import AutoTokenizer
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 
 # Load environment variables
 load_dotenv()
 
-
 HF_TOKEN = os.environ["HF_SALAMANDRA_TOKEN"]
 BASE_URL = os.environ["BASE_URL"]
-
 
 # Define system prompt
 system_prompt = (
@@ -36,16 +35,6 @@ system_prompt = (
 
 
 def extract_json(text):
-    """
-    Extract JSON object from a text string.
-    
-    Args:
-        text (str): Input text containing JSON
-        
-    Returns:
-        dict: Parsed JSON object
-    """
-    # Find text between first { and last }
     json_match = re.search(r'({[\s\S]*})', text)
     if json_match:
         json_str = json_match.group(1)
@@ -56,76 +45,57 @@ def extract_json(text):
     return None
 
 
-# Define the function to interact with the model API
 def generate_response(content):
     client = OpenAI(
        base_url=BASE_URL + "/v1/",
        api_key=HF_TOKEN
     )
 
-
     messages = [{"role": "system", "content": system_prompt}]
     messages.append({"role": "user", "content": content})
-    stream = False
     chat_completion = client.chat.completions.create(
         model="tgi",
         messages=messages,
-        stream=stream,
         max_tokens=2000,
-        # temperature=0.1,
-        # top_p=0.95,
-        # frequency_penalty=0.2,
     )
 
     response = chat_completion.choices[0].message.content
-
     return response
 
 
 def generate_customization(context: str, locations: list) -> str:
-    """
-    Prepares content with context and locations for generating a structured JSON object.
+    content = f"Context: {context}" + json.dumps(locations, indent=2)
+    best_generated_json = {"locations": []}
+    num_parallel_requests = 30
     
-    Args:
-        context (str): The context string to include in the JSON.
-        locations (list): A list of location dictionaries, each containing details like field, title, and coordinates.
-    
-    Returns:
-        str: The generated JSON content or an error message.
-    """
-    # Prepare content with provided context and locations
-    content = f"Context: {context}"
+    with ThreadPoolExecutor(max_workers=num_parallel_requests) as executor:
+        futures = [executor.submit(generate_response, content) for _ in range(num_parallel_requests)]
+        
+        for future in as_completed(futures):
+            response = future.result()
+            generated_json = extract_json(response)
+            
+            if generated_json and "locations" in generated_json:
+                if len(generated_json["locations"]) == 3:
+                    false_location = True
+                    for location in generated_json["locations"]:
+                        if "title" in location:
+                            if location["title"] in [loc["title"] for loc in locations]:
+                                false_location = False
+                                break
+                    if not false_location:
+                        best_generated_json = generated_json
+                        break
+                elif best_generated_json["locations"] != 3:
+                    best_generated_json = generated_json
 
-    content += json.dumps(locations, indent=2)
-    
-    best_generated_json = {}
-    
-    for _ in range(5):
-        # Generate JSON based on specified structure
-        response = generate_response(content)
-
-        # Extract JSON from the generated response
-        generated_json = extract_json(response)
-
-        if generated_json is not None and "locations" in generated_json:
-            if len(generated_json["locations"]) == 3:
-                best_generated_json = generated_json
-                break
-            else:
-                best_generated_json = generated_json
-
-        time.sleep(5)
-    
     try:
-        for location in best_generated_json["locations"]:
+        for location in best_generated_json.get("locations", []):
             if "title" not in location and isinstance(location, str):
-                location = {
-                    "title": location
-                }
+                location = {"title": location}
             elif "title" in location:
-                location = {
-                    "title": location["title"]
-                }
+                location = {"title": location["title"]}
+        
         if len(best_generated_json["locations"]) > 3:
             best_generated_json["locations"] = best_generated_json["locations"][:3]
             
