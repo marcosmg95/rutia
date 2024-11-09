@@ -4,6 +4,7 @@ import weaviate
 import weaviate.classes as wvc
 from weaviate.classes.config import Property, DataType
 from weaviate.classes.data import GeoCoordinate
+from pathlib import Path
 
 from backend.indexers.activities import request_today_activities
 from backend.indexers.museums import request_today_museum_events
@@ -50,7 +51,7 @@ def is_float(element: any) -> bool:
 def main():
     try:
         start_time = time.time()
-        client = weaviate.connect_to_local()
+        client = weaviate.connect_to_local(port=9000)
 
         client.collections.delete(COLLECTION_NAME)
 
@@ -59,26 +60,30 @@ def main():
             properties=[
                 Property(name="field", data_type=DataType.TEXT),
                 Property(name="title", data_type=DataType.TEXT),
+                Property(name="description", data_type=DataType.TEXT),
                 Property(name="location", data_type=DataType.GEO_COORDINATES),
+                Property(name="code", data_type=DataType.INT),
             ],
             vectorizer_config=wvc.config.Configure.Vectorizer.none()
         )
 
         test_collection = client.collections.get(COLLECTION_NAME)
 
-        # Index today activities
-        activities = request_today_activities()
-
         def insert_location(location, i):
             try:
+                if location.get("Latitud") == "" or location.get("Longitud") == "":
+                    return
+                
                 test_collection.data.insert(
                     properties={
                         "field": location.get("Ambit", ""),
                         "title": location.get("Nom_Equipament", ""),
+                        "description": location.get("Descripcio", ""),
                         "location": GeoCoordinate(
                             latitude=float(location.get("Latitud", 0)),
                             longitude=float(location.get("Longitud", 0))
-                        )
+                        ),
+                        "code": i
                     },
                 )
             except Exception as e:
@@ -87,7 +92,7 @@ def main():
 
         # Load data/museums_and_culture.json
         with open(
-            "/home/marcos/Repos/rutia/backend/data/museums_and_culture.json",
+            Path.cwd() / "backend/data/museums_and_culture.json",
             "r",
             encoding="utf-8"
         ) as file:

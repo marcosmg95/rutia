@@ -15,7 +15,9 @@
     "Tipus_Equipament": "Arxius i biblioteques patrimonials",
     "Ambit": "Història i memòria",
     "Latitud": 41.38687264,
-    "Longitud": 2.181806284
+    "Longitud": 2.181806284,
+    "Descripcio": "Descobreix la història visual de Barcelona a través d’una col·lecció impressionant de fotografies que capturen l’essència i els canvis de la ciutat al llarg del temps."
+
   },
   {
     "Any": 2023,
@@ -33,7 +35,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.40318899,
-    "Longitud": 2.174826626
+    "Longitud": 2.174826626,
+    "Descripcio": "L’obra mestra inacabada de Gaudí és un símbol de Barcelona. La seva arquitectura única i plena de detalls et transporta a un món màgic de formes i colors."
   },
   {
     "Any": 2023,
@@ -51,7 +54,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.37129453,
-    "Longitud": 2.149575441
+    "Longitud": 2.149575441,
+    "Descripcio": "Centre cultural en una antiga fàbrica modernista que ofereix exposicions, concerts i tallers per a tota la família. És un espai vibrant amb una programació cultural molt variada."
   },
   {
     "Any": 2023,
@@ -69,7 +73,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.40291281,
-    "Longitud": 2.194947848
+    "Longitud": 2.194947848,
+    "Descripcio": "Museu d’art contemporani en una antiga fàbrica de filats, on podràs gaudir de les obres d’artistes catalans moderns en un entorn ple d’història."
   },
   {
     "Any": 2023,
@@ -87,7 +92,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.3913381,
-    "Longitud": 2.16468108
+    "Longitud": 2.16468108,
+    "Descripcio": "Un dels tresors modernistes de Barcelona. Aquesta casa et permet veure com vivia la burgesia de principis del segle XX, envoltada d’elements arquitectònics i decoratius únics."
   },
   {
     "Any": 2023,
@@ -105,7 +111,9 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.3916967,
-    "Longitud": 2.1649608
+    "Longitud": 2.1649608,
+    "Descripcio": "Gaudí va transformar aquesta casa en una obra d’art viva, inspirada en el mar i la natura. És una visita obligada per a qui vulgui veure el modernisme en la seva màxima expressió."
+    
   },
   {
     "Any": 2023,
@@ -123,7 +131,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.41478129,
-    "Longitud": 2.155046761
+    "Longitud": 2.155046761,
+    "Descripcio": "Explora la casa on va viure Gaudí al Parc Güell, plena de mobles i objectes que et portaran a conèixer el món íntim del genial arquitecte."
   },
   {
     "Any": 2023,
@@ -141,7 +150,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.4036093,
-    "Longitud": 2.1512308
+    "Longitud": 2.1512308,
+    "Descripcio": "Primera gran obra de Gaudí, amb una arquitectura colorista que captiva. Aquest edifici és una finestra a l’estil més jove i atrevit del mestre del modernisme."
   },
   {
     "Any": 2023,
@@ -159,7 +169,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.3675648,
-    "Longitud": 2.1685315
+    "Longitud": 2.1685315,
+     "Descripcio": "Gaudeix de les vistes espectaculars de Barcelona des d’aquesta fortalesa històrica, avui convertida en un espai cultural amb exposicions sobre la ciutat i la seva història."
   },
   {
     "Any": 2023,
@@ -177,7 +188,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38388306,
-    "Longitud": 2.166795152
+    "Longitud": 2.166795152,
+    "Descripcio": "Espai dinàmic amb exposicions i activitats que et faran reflexionar sobre el món actual. És el lloc ideal per a conèixer les tendències culturals i socials del moment."
   },
   {
     "Any": 2023,
@@ -195,7 +207,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Ciència",
     "Latitud": 41.41326737,
-    "Longitud": 2.130658424
+    "Longitud": 2.130658424,
+    "Descripcio": "Un museu interactiu de ciència per a totes les edats. Amb el seu bosc inundat i planetari, és una experiència fascinant per aprendre de manera divertida."
   },
   {
     "Any": 2023,
@@ -213,7 +226,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.40252955,
-    "Longitud": 2.188065206
+    "Longitud": 2.188065206,
+    "Descripcio": "Centre dedicat al disseny, amb exposicions que mostren des de moda fins a objectes quotidians. És un punt de trobada per als amants de la creativitat i la innovació."
   },
   {
     "Any": 2023,
@@ -231,7 +245,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.38564148,
-    "Longitud": 2.183568044
+    "Longitud": 2.183568044,
+    "Descripcio": "Descobreix les ruïnes d’un barri medieval mentre aprens sobre la història de Barcelona. Un espai que combina història i memòria d’una forma única."
   },
   {
     "Any": 2023,
@@ -249,25 +264,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.373639,
-    "Longitud": 2.1543788
-  },
-  {
-    "Any": 2023,
-    "Indicador": "Visitants",
-    "Nom_Equipament": "Espais patrimonials del MUHBA",
-    "Valor": 444696,
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": 1,
-    "Nom_Districte": "Ciutat Vella",
-    "Codi_Barri": 2,
-    "Nom_Barri": "el Barri Gòtic",
-    "Titularitat": "Ajuntament de Barcelona",
-    "Tipus_Us": "Centres patrimonials",
-    "Tipus_Equipament": "Espais d'interès patrimonial",
-    "Ambit": "Història i memòria",
-    "Latitud": "",
-    "Longitud": ""
+    "Longitud": 2.1543788,
+    "Descripcio": "Museu que ret homenatge als bombers de Barcelona. Un espai educatiu amb activitats per aprendre sobre la prevenció d’incendis i la seguretat."
   },
   {
     "Any": 2023,
@@ -285,7 +283,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.39096313,
-    "Longitud": 2.175293998
+    "Longitud": 2.175293998,
+    "Descripcio": "Galeries d’art contemporani català situades en edificis històrics, on es poden veure obres de grans artistes locals en un entorn acollidor i inspirador."
   },
   {
     "Any": 2023,
@@ -303,7 +302,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.43376296,
-    "Longitud": 2.190815632
+    "Longitud": 2.190815632,
+    "Descripcio": "Antiga fàbrica convertida en espai d’art contemporani, amb exposicions innovadores d’artistes emergents. Un lloc perfecte per als amants de l’art experimental."
   },
   {
     "Any": 2023,
@@ -321,7 +321,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.3876349,
-    "Longitud": 2.1827391
+    "Longitud": 2.1827391,
+    "Descripcio": "Fundació dedicada a la fotografia amb una col·lecció d’imatges de grans fotògrafs. Aquí podràs submergir-te en el món de la fotografia contemporània."
   },
   {
     "Any": 2023,
@@ -339,7 +340,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.36898602,
-    "Longitud": 2.147697935
+    "Longitud": 2.147697935,
+     "Descripcio": "Museu al Poble Espanyol amb obres d’artistes espanyols reconeguts com Picasso i Miró. Un espai màgic per gaudir de l’art modern en un entorn únic."
   },
   {
     "Any": 2023,
@@ -357,7 +359,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.36863,
-    "Longitud": 2.159851
+    "Longitud": 2.159851,
+    "Descripcio": "Museu dedicat a l'obra de Joan Miró, un dels artistes més importants del segle XX. Ofereix una gran col·lecció de pintures, escultures i obres gràfiques que mostren la seva evolució artística."
   },
   {
     "Any": 2023,
@@ -375,7 +378,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.39656899,
-    "Longitud": 2.147035913
+    "Longitud": 2.147035913,
+    "Descripcio": "Espai dedicat a l'art i la cultura contemporània amb una col·lecció de pintures, escultures i ceràmiques de diversos artistes moderns. Un lloc perfecte per descobrir noves tendències artístiques."
   },
   {
     "Any": 2023,
@@ -393,25 +397,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.3826167,
-    "Longitud": 2.1262746
-  },
-  {
-    "Any": 2023,
-    "Indicador": "Visitants",
-    "Nom_Equipament": "Hash Marihuana Cáñamo & Hemp Museum",
-    "Valor": 6750,
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": 1,
-    "Nom_Districte": "Ciutat Vella",
-    "Codi_Barri": 2,
-    "Nom_Barri": "el Barri Gòtic",
-    "Titularitat": "Titularitat privada",
-    "Tipus_Us": "Centres patrimonials",
-    "Tipus_Equipament": "Museus i col·leccions",
-    "Ambit": "Història i memòria",
-    "Latitud": 41.38078339,
-    "Longitud": 2.180139311
+    "Longitud": 2.1262746,
+    "Descripcio": "Fundació que presenta una selecció d'obres d'art contemporani, amb un enfocament especial en el modernisme i l'art dels segles XX i XXI. Un espai per gaudir de la creativitat actual."
   },
   {
     "Any": 2023,
@@ -429,7 +416,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.39795,
-    "Longitud": 2.20267
+    "Longitud": 2.20267,
+    "Descripcio": "Un centre dedicat a les arts digitals, amb exposicions immersives i interactives que utilitzen la tecnologia per oferir una experiència única d'art digital i visual."
   },
   {
     "Any": 2023,
@@ -447,7 +435,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.388415,
-    "Longitud": 2.1960494
+    "Longitud": 2.1960494,
+    "Descripcio": "Espai cultural centrat en la fotografia i l'art contemporani. Ofereix exposicions de fotògrafs de renom i activitats que exploren la fotografia com a mitjà artístic."
   },
   {
     "Any": 2023,
@@ -465,7 +454,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Ciència",
     "Latitud": 41.37647756,
-    "Longitud": 2.184560919
+    "Longitud": 2.184560919,
+    "Descripcio": "Un dels aquaris més grans d'Europa, amb una gran varietat d'espècies marines. Una experiència fascinant per conèixer els ecosistemes marins i les espècies que habiten els oceans."
   },
   {
     "Any": 2023,
@@ -483,7 +473,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38105733,
-    "Longitud": 2.169793857
+    "Longitud": 2.169793857,
+    "Descripcio": "Un espai cultural dedicat a l'art contemporani, situat en una antiga capella. Ofereix exposicions d'artistes locals i internacionals, així com activitats i projectes culturals."
   },
   {
     "Any": 2023,
@@ -501,7 +492,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Arts visuals",
     "Latitud": 41.3953163,
-    "Longitud": 2.162043384
+    "Longitud": 2.162043384,
+    "Descripcio": "Obra emblemàtica de Gaudí, amb una arquitectura única i una façana que sembla viva. A l'interior, pots explorar la vida i l'obra del gran arquitecte modernista."
   },
   {
     "Any": 2023,
@@ -519,7 +511,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38249832,
-    "Longitud": 2.17170863
+    "Longitud": 2.17170863,
+    "Descripcio": "Centre cultural dedicat a la fotografia i les arts visuals, amb exposicions que van des de la fotografia contemporània fins a projectes de gran format. Un lloc ideal per als amants de la imatge."
   },
   {
     "Any": 2023,
@@ -537,7 +530,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.37015387,
-    "Longitud": 2.157646024
+    "Longitud": 2.157646024,
+    "Descripcio": "Museu que mostra la història antiga de Catalunya, amb col·leccions d'objectes prehistòrics, ibèrics, romans i medievals que il·lustren la vida dels nostres avantpassats."
   },
   {
     "Any": 2023,
@@ -555,7 +549,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38314596,
-    "Longitud": 2.167830774
+    "Longitud": 2.167830774,
+    "Descripcio": "Museu dedicat a l'art contemporani amb una col·lecció impressionant d'obres de grans artistes internacionals i exposicions que exploren les noves tendències artístiques."
   },
   {
     "Any": 2023,
@@ -573,7 +568,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.384316,
-    "Longitud": 2.177521
+    "Longitud": 2.177521,
+    "Descripcio": "Museu que explora la història de Barcelona des dels seus orígens romans fins a l'actualitat, amb espais arqueològics i exposicions que mostren l'evolució de la ciutat."
   },
   {
     "Any": 2023,
@@ -591,7 +587,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.38066861,
-    "Longitud": 2.18550348
+    "Longitud": 2.18550348,
+    "Descripcio": "Museu dedicat a la història de Catalunya, des de la prehistòria fins als nostres dies. Ofereix una visió única sobre els fets històrics que han marcat el país."
   },
   {
     "Any": 2023,
@@ -609,7 +606,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Ciència",
     "Latitud": 41.41077988,
-    "Longitud": 2.220482541
+    "Longitud": 2.220482541,
+   "Descripcio": "Un museu dedicat a la ciència, amb exposicions sobre la natura, els ecosistemes i la biodiversitat. Inclou una gran col·lecció de minerals, animals i plantes."
   },
   {
     "Any": 2023,
@@ -627,7 +625,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.38228253,
-    "Longitud": 2.172714946
+    "Longitud": 2.172714946,
+    "Descripcio": "Museu dedicat a l'erotisme, amb una col·lecció d'objectes i obres d'art que exploren la relació entre l'art i la sexualitat a través de la història."
   },
   {
     "Any": 2023,
@@ -645,7 +644,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.39836663,
-    "Longitud": 2.184867722
+    "Longitud": 2.184867722,
+    "Descripcio": "Un museu dedicat a la música, amb una gran col·lecció d'instruments musicals, partitures i exposicions interactives que exploren la història de la música i la seva evolució."
   },
   {
     "Any": 2023,
@@ -663,7 +663,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.38738773,
-    "Longitud": 2.181708405
+    "Longitud": 2.181708405,
+    "Descripcio": "Museu dedicat a l'obra deliciosa de la xocolata. Ofereix una història de la xocolata, des dels seus orígens fins a la seva fabricació, amb una col·lecció de figures i creacions en xocolata."
   },
   {
     "Any": 2023,
@@ -681,7 +682,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.37905928,
-    "Longitud": 2.120267204
+    "Longitud": 2.120267204,
+    "Descripcio": "Museu dedicat a la història del Barça, amb trofeus, objectes i documents que mostren els moments més importants del club. Un espai per als fans del futbol i la història esportiva."
   },
   {
     "Any": 2023,
@@ -699,7 +701,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.42174827,
-    "Longitud": 2.11979347
+    "Longitud": 2.11979347,
+    "Descripcio": "Un museu fascinant que presenta una gran col·lecció d'autòmats antics i màquines de joc. Una visita perfecta per a conèixer la història de les màquines de diversió."
   },
   {
     "Any": 2023,
@@ -717,7 +720,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.39362624,
-    "Longitud": 2.164736478
+    "Longitud": 2.164736478,
+    "Descripcio": "Un museu dedicat a la cultura egípcia, amb una col·lecció d'objectes, escultures i sarcòfags que et transportaran a l'Antic Egipte."
   },
   {
     "Any": 2023,
@@ -735,7 +739,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.36906211,
-    "Longitud": 2.155983304
+    "Longitud": 2.155983304,
+    "Descripcio": "Museu dedicat a les cultures del món, amb col·leccions que mostren l'art i les tradicions de diverses regions del planeta, des de l'Àfrica fins a l'Àsia i Oceania."
   },
   {
     "Any": 2023,
@@ -753,7 +758,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38491205,
-    "Longitud": 2.180305787
+    "Longitud": 2.180305787,
+    "Descripcio": "Museu dedicat a l'art modern i contemporani amb una col·lecció d'obres realistes i figuratives. Un espai per a descobrir artistes que treballen en el realisme contemporani."
   },
   {
     "Any": 2023,
@@ -771,7 +777,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.384174,
-    "Longitud": 2.176939205
+    "Longitud": 2.176939205,
+     "Descripcio": "Museu dedicat a la col·lecció personal de l'escultor Frederic Marès, amb obres d'art i objectes de diverses èpoques, des de l'antiguitat fins al segle XX."
   },
   {
     "Any": 2023,
@@ -789,7 +796,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.37594981,
-    "Longitud": 2.176041471
+    "Longitud": 2.176041471,
+    "Descripcio": "Museu que explora la història marítima de Barcelona, amb exposicions sobre la navegació, els vaixells i la relació de la ciutat amb el mar al llarg dels segles."
   },
   {
     "Any": 2023,
@@ -807,7 +815,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.36885357,
-    "Longitud": 2.153363173
+    "Longitud": 2.153363173,
+    "Descripcio": "Museu amb una de les col·leccions més completes d'art català, des de l'art romànic fins al modernisme. Una visita imprescindible per als amants de l'art i la història."
   },
   {
     "Any": 2023,
@@ -825,7 +834,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.36624934,
-    "Longitud": 2.157076095
+    "Longitud": 2.157076095,
+    "Descripcio": "Museu dedicat als Jocs Olímpics i l'esport, amb trofeus, documents i objectes relacionats amb la història de l'esport olímpic i les figures més destacades."
   },
   {
     "Any": 2023,
@@ -843,7 +853,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.38515231,
-    "Longitud": 2.180834795
+    "Longitud": 2.180834795,
+    "Descripcio": "Museu dedicat a l'obra de Pablo Picasso, amb una extensa col·lecció d'obres que mostren l'evolució de l'artista des de la seva joventut fins a les etapes més madures."
   },
   {
     "Any": 2023,
@@ -861,7 +872,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Arts visuals",
     "Latitud": 41.39152217,
-    "Longitud": 2.163757744
+    "Longitud": 2.163757744,
+    "Descripcio": "Museu dedicat a l'artista Antoni Tàpies, amb una gran col·lecció de les seves obres que exploren el modernisme i les tècniques innovadores de l'art contemporani."
   },
   {
     "Any": 2023,
@@ -879,7 +891,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.3791747,
-    "Longitud": 2.1744127
+    "Longitud": 2.1744127,
+    "Descripcio": "Un altre gran projecte de Gaudí, el Palau Güell és una obra arquitectònica que combina funcionalitat i bellesa, amb detalls decoratius únics que mostren l'estil modernista."
   },
   {
     "Any": 2023,
@@ -897,7 +910,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.39610095,
-    "Longitud": 2.159514266
+    "Longitud": 2.159514266,
+    "Descripcio": "Un edifici històric que alberga exposicions culturals i d'art. També ofereix informació sobre la història de Catalunya i una mirada a la seva identitat cultural."
   },
   {
     "Any": 2023,
@@ -915,7 +929,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.4134251,
-    "Longitud": 2.1531849
+    "Longitud": 2.1531849,
+    "Descripcio": "Un parc dissenyat per Gaudí, ple de formes orgàniques i colorides. És un espai únic on es combina la natura amb l'arquitectura modernista en un entorn espectacular."
   },
   {
     "Any": 2023,
@@ -933,7 +948,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.370666,
-    "Longitud": 2.149491
+    "Longitud": 2.149491,
+    "Descripcio": "Una de les obres més emblemàtiques de l'arquitectura moderna, dissenyada per Mies van der Rohe. Un pavelló amb línies netes i elegants que mostra la bellesa del minimalisme."
   },
   {
     "Any": 2023,
@@ -951,7 +967,8 @@
     "Tipus_Equipament": "Espais d'interès patrimonial",
     "Ambit": "Història i memòria",
     "Latitud": 41.4118413,
-    "Longitud": 2.1744033
+    "Longitud": 2.1744033,
+    "Descripcio": "Un conjunt d'edificis modernistes creats per Lluís Domènech i Montaner. Avui és un centre cultural i patrimoni de la humanitat, amb una arquitectura impressionant."
   },
   {
     "Any": 2023,
@@ -969,7 +986,8 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Història i memòria",
     "Latitud": 41.39557417,
-    "Longitud": 2.112056853
+    "Longitud": 2.112056853,
+    "Descripcio": "Un monestir gòtic que et transporta a l'edat mitjana. És un lloc de pau i història, amb un claustre impressionant i un museu que explica la vida dels monjos i les monges."
   },
   {
     "Any": 2023,
@@ -987,7 +1005,8 @@
     "Tipus_Equipament": "Centres d'exposicions",
     "Ambit": "Arts visuals",
     "Latitud": 41.37722725,
-    "Longitud": 2.175597264
+    "Longitud": 2.175597264,
+    "Descripcio": "Un espai cultural dedicat a l'art contemporani. Ofereix exposicions d'artistes emergents i activitats relacionades amb la creació artística i la cultura."
   },
   {
     "Any": 2023,
@@ -1005,386 +1024,10 @@
     "Tipus_Equipament": "Museus i col·leccions",
     "Ambit": "Ciència",
     "Latitud": 41.386823,
-    "Longitud": 2.190346
+    "Longitud": 2.190346,
+    "Descripcio": "Un zoològic amb una gran varietat d'animals de tot el món. És una bona manera d'aprendre sobre la fauna i la conservació de les espècies amenaçades."
   },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
-  {
-    "Any": "",
-    "Indicador": "",
-    "Nom_Equipament": "",
-    "Valor": "",
-    "Notes_Dades": "",
-    "Notes_Equipament": "",
-    "Codi_Districte": "",
-    "Nom_Districte": "",
-    "Codi_Barri": "",
-    "Nom_Barri": "",
-    "Titularitat": "",
-    "Tipus_Us": "",
-    "Tipus_Equipament": "",
-    "Ambit": "",
-    "Latitud": "",
-    "Longitud": ""
-  },
+
   {
     "Any": "",
     "Indicador": "",
