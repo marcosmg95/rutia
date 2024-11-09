@@ -3,7 +3,7 @@ import { useMenuContext } from "@/context/menuContext";
 import { AudioRecorder } from "@/audio/audioRecorder";
 
 export default function Step2() {
-  const { data, setData, nextStep, setMarkers, firstResults, ambits } = useMenuContext();
+  const { data, setData, nextStep, setMarkers, firstResults, ambits, setFinishLoading } = useMenuContext();
 
   const getAddress = async (lat: number, lng: number): Promise<string | null> => {
     const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=jsonv2`
@@ -30,7 +30,7 @@ export default function Step2() {
 
 
   const getLastMarkers = async () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}customization`
+    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}customization/?clean_key=${Date.now()}`
     const body = {
       context: data.context,
       locations: firstResults,
@@ -77,6 +77,7 @@ export default function Step2() {
         }
       })
       setMarkers(marcadors);
+      setFinishLoading(true);
     }).catch((error) => {
       console.error('error', error);
     });
@@ -93,7 +94,7 @@ export default function Step2() {
       const formData = new FormData();
       formData.append('file', audioBlob, 'recording.wav');
 
-      const response = await fetch('http://35.204.96.165:8200/upload_audio', {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ''}upload_audio`, {
         method: 'POST',
         body: formData,
       });

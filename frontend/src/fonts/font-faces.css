@@ -7,3 +7,8 @@
   font-family: Quicksand;
   src: url(./Quicksand-VariableFont_wght.ttf);
 }
+
+@font-face {
+  font-family: BalooBhaijaan2;
+  src: url(./BalooBhaijaan2-VariableFont_wght.ttf);
+}

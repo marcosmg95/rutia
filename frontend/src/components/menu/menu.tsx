@@ -6,7 +6,7 @@ import Step2 from "./step2";
 import Step3 from "./step3";
 
 export default function Menu() {
-  const { step, setStep } = useMenuContext();
+  const { step, setStep, finishLoading } = useMenuContext();
 
   const steps = [
     { key: 0, view: <Step1 /> },
@@ -20,7 +20,7 @@ export default function Menu() {
         {steps.map(({ key }, i) => (
           <div
             key={key}
-            className={`circle  ${i === step ? 'current' : ''} ${i < step ? 'completed hover:cursor-pointer' : ''}`}
+            className={`circle  ${i === step ? 'current' : ''} ${i < step ? 'completed hover:cursor-pointer' : ''} ${step == 2 && finishLoading ? 'completed' : ''}`}
             onClick={() => { if (i < step) setStep(i) }}
           >
             <span>{i + 1}</span>

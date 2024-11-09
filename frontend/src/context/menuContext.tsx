@@ -17,6 +17,8 @@ interface MenuContextType {
   setMarkers: (m: Marcador[]) => void
   firstResults?: ResultatAPI[]
   setFirstResults: (a: ResultatAPI[]) => void
+  finishLoading: boolean
+  setFinishLoading: (b: boolean) => void
 }
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
@@ -27,6 +29,7 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
   const [markers, setMarkers] = useState<Marcador[]>([]);
   const [step, setStep] = useState<number>(0);
   const [firstResults, setFirstResults] = useState<ResultatAPI[]>();
+  const [finishLoading, setFinishLoading] = useState<boolean>(false);
 
   const ambits: { [key: string]: string } = {
     art: "art",
@@ -47,7 +50,7 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
 
   return (
     <MenuContext.Provider value={{
-      data, setData, step, setStep, nextStep, prevStep, ambits, center, setCenter, markers, setMarkers, firstResults, setFirstResults
+      data, setData, step, setStep, nextStep, prevStep, ambits, center, setCenter, markers, setMarkers, firstResults, setFirstResults, finishLoading, setFinishLoading,
     }}>
       {children}
     </MenuContext.Provider>
