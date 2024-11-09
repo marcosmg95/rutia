@@ -63,6 +63,7 @@ export default function Step1() {
     fetch(url, {
       method: 'GET',
       headers: {
+        mode: 'no-cors',
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true',
       }
@@ -76,8 +77,17 @@ export default function Step1() {
       // console.debug('debug', response);
       setFirstResults(response);
       const marcadors: Marcador[] = response.map((r: ResultatAPI) => {
+        let field = null;
+
+        if (r.field === "Ciència") field = ambits.science;
+        if (r.field === "Arts visuals") field = ambits.art;
+        if (r.field === "Història i memòria") field = ambits.history;
+
         return {
+          code: r.code,
           nom: r.title,
+          descripcio: r.description,
+          ambit: field,
           localitzacio: {
             lat: r.location?.latitude,
             lng: r.location?.longitude,

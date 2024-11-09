@@ -35,10 +35,12 @@ export default function Step2() {
       context: data.context,
       locations: firstResults,
     };
-    fetch(url, {
+    console.log('before request');
+    await fetch(url, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: {
+        mode: 'no-cors',
         'Content-Type': 'application/json',
         'ngrok-skip-browser-warning': 'true',
       }
@@ -111,7 +113,7 @@ export default function Step2() {
   return (
     <>
       <div className="form-group">
-        <label className="px-4 py-3">Xateja amb rutIA per descobrir experiències fetes a mida per a tu: </label>
+        <label className="px-4 py-3 w-full">Xateja amb rutIA per descobrir experiències fetes a mida per a tu: </label>
         <textarea
           rows={6}
           className="w-full px-4 py-3"
