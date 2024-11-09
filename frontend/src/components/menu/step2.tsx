@@ -59,16 +59,10 @@ export default function Step2() {
           onChange={(e) => setData({ ...data, context: e.target.value })}
         />
       </div>
-<<<<<<< HEAD
       <AudioRecorder />
       <button
         className="primary uppercase px-7 self-center mt-auto text-lg"
-        onClick={nextStep}
-=======
-      <button
-        className="primary uppercase px-7 self-center mt-auto text-lg"
         onClick={clickGenerar}
->>>>>>> bd0b49376261da77682c8ee9b8b5926a40ff66f7
       >
         Generar ruta
       </button>
