@@ -197,3 +197,17 @@ footer {
     color: color-mix(in srgb, var(--color-5), var(--light-color) 65%);
   }
 }
+
+
+.home-content {
+  margin: auto;
+  padding-top: 180px;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.home-content .title {
+  font-family: BalooBhaijaan2;
+  font-weight: 900;
+}
