@@ -1,6 +1,7 @@
 import weaviate
 from weaviate.classes.data import GeoCoordinate
-from weaviate.classes.query import Filter, GeoCoordinate, Sort
+from weaviate.classes.query import Filter, GeoCoordinate
+from datetime import datetime, timezone
 
 
 def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date: str = None):
@@ -18,8 +19,20 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date
             field_filter |= Filter.by_property("field").equal(field)
 
     if date:
-        date_filter = Filter.by_property("date_start").greater_or_equal(date)
-        date_filter &= Filter.by_property("date_end").less_or_equal(date)
+        # Parse the string into a datetime object
+        dt = datetime.strptime(date, '%Y-%m-%d')
+
+        # Convert to RFC 3339 format with UTC (Z)
+        formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+        formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
+        date_filter = Filter.by_property("date_start").greater_or_equal(
+            formatted
+        )
+        date_filter &= Filter.by_property("date_end").less_or_equal(
+            formatted
+        )
+    else:
+        date_filter = None
 
     # Combine the field filter with the location filter
     near_activities = test_collection.query.fetch_objects(
@@ -31,7 +44,7 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date
                     latitude=latitude,
                     longitude=longitude
                 ),
-                distance=20000  # In meters
+                distance=500000000000000000000000 # In meters
             )
         ),
         limit=10

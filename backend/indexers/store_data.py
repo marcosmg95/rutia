@@ -162,7 +162,7 @@ def main():
                         "field": "Events",
                         "title": event.get("denominaci", ""),
                         "description": event.get("descripcio", ""),
-                        "event": GeoCoordinate(
+                        "location": GeoCoordinate(
                             latitude=float(event.get("latitud", 0)),
                             longitude=float(event.get("longitud", 0))
                         ),
@@ -215,7 +215,7 @@ def main():
                         "field": "Events",
                         "title": event.get("titol", ""),
                         "description": event.get("descripcio", ""),
-                        "event": GeoCoordinate(
+                        "location": GeoCoordinate(
                             latitude=latitude,
                             longitude=longitude
                         ),
@@ -266,7 +266,7 @@ def main():
                         "field": "Events",
                         "title": event.get("titol", ""),
                         "description": description,
-                        "event": GeoCoordinate(
+                        "location": GeoCoordinate(
                             latitude=latitude,
                             longitude=longitude
                         ),

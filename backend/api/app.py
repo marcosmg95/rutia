@@ -42,7 +42,7 @@ def get_data(
     field_map = {
         "history": "Història i memòria",
         "art": "Arts visuals",
-        "science": "Ciència"
+        "science": "Ciència",
         "events": "Events",
     }
 
