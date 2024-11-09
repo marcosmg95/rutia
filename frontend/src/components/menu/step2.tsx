@@ -48,11 +48,11 @@ export default function Step2() {
 
   return (
     <>
-      <div className="form-textarea">
-        <label>Xateja amb rutIA per descobrir experiències fetes a mida per a tu</label>
+      <div className="form-group mb-3">
+        <label className="px-4 py-3">Xateja amb rutIA per descobrir experiències fetes a mida per a tu: </label>
         <textarea
           rows={6}
-          className="w-full"
+          className="w-full px-4 py-3"
           placeholder=""
           value={data.context}
           onChange={(e) => setData({ ...data, context: e.target.value })}
