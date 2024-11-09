@@ -47,6 +47,28 @@ export default function Step2() {
     nextStep();
   }
 
+  const handleRecordingComplete = async (audioBlob) => {
+    try {
+      const formData = new FormData();
+      formData.append('file', audioBlob, 'recording.wav');
+
+      const response = await fetch('http://35.204.96.165:8200/upload_audio', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        setData({ ...data, context: result.text });
+        console.log('Audio sent successfully!');
+      } else {
+        console.error('Failed to send audio');
+      }
+    } catch (error) {
+      console.error('Error sending audio:', error);
+    }
+  };
+
   return (
     <>
       <div className="form-group mb-3">
@@ -59,7 +81,7 @@ export default function Step2() {
           onChange={(e) => setData({ ...data, context: e.target.value })}
         />
       </div>
-      <AudioRecorder />
+      <AudioRecorder onRecordingComplete={handleRecordingComplete} />
       <button
         className="primary uppercase px-7 self-center mt-auto text-lg"
         onClick={clickGenerar}
