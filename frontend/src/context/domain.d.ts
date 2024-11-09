@@ -15,11 +15,15 @@ export interface DadesEntrada {
 export interface Marcador {
   localitzacio: Coordenades
   nom: string
+  adreca: string
+  descripcio: string
 }
 
 export interface ResultatAPI {
+  code: number
   field: string
   title: string
+  description: string
   location: {
     latitude: number
     longitude: number

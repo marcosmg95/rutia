@@ -15,6 +15,8 @@ interface MenuContextType {
   setCenter: (c: Coordenades) => void
   markers: Marcador[]
   setMarkers: (m: Marcador[]) => void
+  firstResults: any
+  setFirstResults: (a: any) => void
 }
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
@@ -24,6 +26,7 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
   const [data, setData] = useState<DadesEntrada>({ dia: '', ciutat: '', context: '', tipus: { art: false, history: false, science: false } });
   const [markers, setMarkers] = useState<Marcador[]>([]);
   const [step, setStep] = useState<number>(0);
+  const [firstResults, setFirstResults] = useState()
 
   const ambits: { [key: string]: string } = {
     art: "art",
@@ -42,7 +45,9 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
   }
 
   return (
-    <MenuContext.Provider value={{ data, setData, step, setStep, nextStep, prevStep, ambits, center, setCenter, markers, setMarkers }}>
+    <MenuContext.Provider value={{
+      data, setData, step, setStep, nextStep, prevStep, ambits, center, setCenter, markers, setMarkers, firstResults, setFirstResults
+    }}>
       {children}
     </MenuContext.Provider>
   );

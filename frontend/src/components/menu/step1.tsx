@@ -3,7 +3,7 @@ import { useMenuContext } from "@/context/menuContext";
 import { useState } from "react";
 
 export default function Step1() {
-  const { data, setData, nextStep, ambits, setMarkers, center, setCenter } = useMenuContext();
+  const { data, setData, nextStep, ambits, setMarkers, center, setCenter, setFirstResults } = useMenuContext();
   const [useCurrentPosition, setUseCurrentPosition] = useState<boolean>(false);
   // const today = new Date().toISOString().substring(0, 10);
 
@@ -57,7 +57,7 @@ export default function Step1() {
     return result;
   };
 
-  const getMarkers = async (coords: Coordenades) => {
+  const getFirstResults = async (coords: Coordenades) => {
     const fields = Object.keys(data.tipus).map((key) => `${key}=${data.tipus[key] ? '1' : '0'}`).join('&')
     const url = `${process.env.NEXT_PUBLIC_API_URL || ''}field?${fields}&latitude=${coords.lat}&longitude=${coords.lng}`
 
@@ -75,7 +75,7 @@ export default function Step1() {
       }
     }).then((response) => {
       // console.debug('debug', response);
-
+      setFirstResults(response);
       const marcadors: Marcador[] = response.map((r: ResultatAPI) => {
         return {
           nom: r.title,
@@ -103,11 +103,11 @@ export default function Step1() {
 
   const clickContinue = async () => {
     if (useCurrentPosition) {
-      await getMarkers(center);
+      await getFirstResults(center);
     } else if (data.ciutat !== '') {
       await getCityCoordinates().then((coords) => {
         if (coords)
-          getMarkers(coords);
+          getFirstResults(coords);
       });
     }
     nextStep();
