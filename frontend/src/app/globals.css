@@ -198,13 +198,20 @@ footer {
   }
 }
 
-
 .home-content {
   margin: auto;
-  padding-top: 180px;
   text-align: center;
   width: 100vw;
   height: 100vh;
+
+  h1 {
+    line-height: 0.8;
+  }
+
+  .image {
+    max-height: 25vh;
+    place-content: center;
+  }
 }
 
 .home-content .title {
