@@ -76,7 +76,7 @@ def retrieve_data_by_field(fields: list, latitude: float = None, longitude: floa
     # Combine the field filter with the location filter
     near_activities = test_collection.query.fetch_objects(
         filters=filters,
-        limit=10
+        limit=20
     )
 
     # for o in near_activities.objects:
