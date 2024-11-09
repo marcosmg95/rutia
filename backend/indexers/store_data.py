@@ -1,16 +1,16 @@
 import re
 import time
+from datetime import datetime
 import weaviate
 import weaviate.classes as wvc
 from weaviate.classes.config import Property, DataType
 from weaviate.classes.data import GeoCoordinate
 from pathlib import Path
+from bs4 import BeautifulSoup
 
 from backend.indexers.activities import request_today_activities
-from backend.indexers.museums import request_today_museum_events
 from backend.indexers.nature import request_today_nature_events
 from backend.indexers.tourismus import request_today_tourismus
-from backend.indexers.semantics import request_sentence_embeddings
 import json
 
 
@@ -37,6 +37,15 @@ def extract_end_hour(text):
     return text
 
 
+def parse_date(date: str):
+    # Parse the string into a datetime object
+    dt = datetime.fromisoformat(date)
+
+    # Convert to RFC 3339 format with UTC (Z)
+    formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
+    return formatted
+
+
 def is_float(element: any) -> bool:
     #If you expect None to be passed:
     if element is None: 
@@ -61,6 +70,8 @@ def main():
                 Property(name="field", data_type=DataType.TEXT),
                 Property(name="title", data_type=DataType.TEXT),
                 Property(name="description", data_type=DataType.TEXT),
+                Property(name="date_start", data_type=DataType.DATE),
+                Property(name="date_end", data_type=DataType.DATE),
                 Property(name="location", data_type=DataType.GEO_COORDINATES),
                 Property(name="code", data_type=DataType.INT),
             ],
@@ -100,6 +111,179 @@ def main():
 
         for i, location in enumerate(museums_and_culture):
             insert_location(location, i)
+
+
+        def insert_diputation(location, i):
+            try:
+                if location.get("Latitud") == "" or location.get("Longitud") == "":
+                    return
+                
+                test_collection.data.insert(
+                    properties={
+                        "field": "Història i memòria",
+                        "title": location.get("titol", ""),
+                        "description": location.get("descripcio", ""),
+                        "location": GeoCoordinate(
+                            latitude=float(location.get("latitud", 0)),
+                            longitude=float(location.get("longitud", 0))
+                        ),
+                        "code": i
+                    },
+                )
+            except Exception as e:
+                print(f"Error inserting activity {i}: {e}")
+            print(f"Activity {i} inserted")
+
+        # Load data/museums_and_culture.json
+        with open(
+            Path.cwd() / "backend/data/patrimoni_diputacio.json",
+            "r",
+            encoding="utf-8"
+        ) as file:
+            patrimoni_diputacio = json.load(file)
+
+        for i, location in enumerate(patrimoni_diputacio):
+            insert_diputation(location, i)
+
+
+        def insert_event(event, i):
+            try:
+                if event.get("Latitud") == "" or event.get("Longitud") == "":
+                    return
+                
+                if event.get("data_inici") == "" or event.get("data_fi") == "":
+                    return
+                else:
+                    start_date = parse_date(event.get("data_inici"))
+                    end_date = parse_date(event.get("data_fi"))
+                
+                test_collection.data.insert(
+                    properties={
+                        "field": "Events",
+                        "title": event.get("denominaci", ""),
+                        "description": event.get("descripcio", ""),
+                        "event": GeoCoordinate(
+                            latitude=float(event.get("latitud", 0)),
+                            longitude=float(event.get("longitud", 0))
+                        ),
+                        "date_start": start_date,
+                        "date_end": end_date,
+                        "code": i
+                    },
+                )
+            except Exception as e:
+                print(f"Error inserting activity {i}: {e}")
+
+            print(f"Activity {i} inserted")
+
+        # Load events
+        events = request_today_activities()
+        
+        for i, event in enumerate(events):
+            insert_event(event, i)
+
+        
+        def insert_touristic_event(event, i):
+            try:
+                localization = event.get("grup_adreca", {}).get("localitzacio", "").split(",")
+                if (
+                    len(localization) > 1 and
+                    is_float(localization[0]) and
+                    is_float(localization[1])
+                ):
+                    latitude = float(localization[0]) 
+                    longitude = float(localization[1])
+                else:
+                    latitude = 0
+                    longitude = 0
+                    
+                if event.get("Latitud") == "" or event.get("Longitud") == "":
+                    return
+                
+                if event.get("data_inici") == "" or event.get("data_fi") == "":
+                    return
+                else:
+                    start_date = parse_date(event.get("data_inici"))
+                    end_date = parse_date(event.get("data_fi"))
+                
+                description = event.get("descripcio", "")
+                soup = BeautifulSoup(description, "html.parser")
+                description = soup.get_text()
+                            
+                test_collection.data.insert(
+                    properties={
+                        "field": "Events",
+                        "title": event.get("titol", ""),
+                        "description": event.get("descripcio", ""),
+                        "event": GeoCoordinate(
+                            latitude=latitude,
+                            longitude=longitude
+                        ),
+                        "date_start": start_date,
+                        "date_end": end_date,
+                        "code": i
+                    },
+                )
+            except Exception as e:
+                print(f"Error inserting activity {i}: {e}")
+
+            print(f"Activity {i} inserted")
+
+        tourismus = request_today_tourismus()
+
+        for i, event in enumerate(tourismus):
+            insert_touristic_event(event, i)
+
+        def insert_nature_event(event, i):
+            try:
+                localization = event.get("grup_adreca", {}).get("localitzacio", "").split(",")
+                if (
+                    len(localization) > 1 and
+                    is_float(localization[0]) and
+                    is_float(localization[1])
+                ):
+                    latitude = float(localization[0]) 
+                    longitude = float(localization[1])
+                else:
+                    latitude = 0
+                    longitude = 0
+                    
+                if event.get("Latitud") == "" or event.get("Longitud") == "":
+                    return
+                
+                if event.get("data_inici") == "" or event.get("data_fi") == "":
+                    return
+                else:
+                    start_date = parse_date(event.get("data_inici"))
+                    end_date = parse_date(event.get("data_fi"))
+                
+                description = event.get("descripcio", "")
+                soup = BeautifulSoup(description, "html.parser")
+                description = soup.get_text()
+                
+                test_collection.data.insert(
+                    properties={
+                        "field": "Events",
+                        "title": event.get("titol", ""),
+                        "description": description,
+                        "event": GeoCoordinate(
+                            latitude=latitude,
+                            longitude=longitude
+                        ),
+                        "date_start": start_date,
+                        "date_end": end_date,
+                        "code": i
+                    },
+                )
+            except Exception as e:
+                print(f"Error inserting activity {i}: {e}")
+
+            print(f"Activity {i} inserted")
+
+        nature_events = request_today_nature_events()
+
+        for i, event in enumerate(nature_events):
+            insert_nature_event(event, i)
 
         print("Time to index all data:", time.time() - start_time)
     finally:

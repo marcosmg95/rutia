@@ -3,7 +3,7 @@ from weaviate.classes.data import GeoCoordinate
 from weaviate.classes.query import Filter, GeoCoordinate, Sort
 
 
-def retrieve_data_by_field(fields: list, latitude: float, longitude: float):
+def retrieve_data_by_field(fields: list, latitude: float, longitude: float, date: str = None):
     COLLECTION_NAME = "Events"
 
     client = weaviate.connect_to_local(port=9000)
@@ -16,11 +16,16 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float):
             field_filter = Filter.by_property("field").equal(field)
         else:
             field_filter |= Filter.by_property("field").equal(field)
-    
+
+    if date:
+        date_filter = Filter.by_property("date_start").greater_or_equal(date)
+        date_filter &= Filter.by_property("date_end").less_or_equal(date)
+
     # Combine the field filter with the location filter
     near_activities = test_collection.query.fetch_objects(
         filters=(
             field_filter &
+            date_filter &
             Filter.by_property("location").within_geo_range(
                 coordinate=GeoCoordinate(
                     latitude=latitude,
