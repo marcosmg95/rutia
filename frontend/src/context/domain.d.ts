@@ -1,5 +1,3 @@
-export type Equipament = "museu" | "patrimoni arquitectònic"
-
 export interface Coordenades {
   lat: number
   lng: number
@@ -8,8 +6,11 @@ export interface Coordenades {
 export interface DadesEntrada {
   dia: string
   ciutat: string
+  context: string
   localitzacio?: Coordenades
-  tipus: Equipament[]
+  tipus: {
+    [key: string]: boolean
+  }
 }
 
 export interface Marcador {
