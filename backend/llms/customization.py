@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 from transformers import AutoTokenizer
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import random
 
 
 # Load environment variables
@@ -16,6 +17,7 @@ load_dotenv()
 
 HF_TOKEN = os.environ["HF_SALAMANDRA_TOKEN"]
 BASE_URL = os.environ["BASE_URL"]
+MAX_LOCATIONS = 5
 
 # Define system prompt
 system_prompt = (
@@ -29,7 +31,7 @@ system_prompt = (
     "    }, ..."
     "  ]"
     "}"
-    "From the following list of places, choose the 3 locations "
+    "From the following list of places, choose the MAX_LOCATIONS locations "
     "that match the context the most. And generate a JSON object for them"
 )
 
@@ -64,9 +66,10 @@ def generate_response(content):
 
 
 def generate_customization(context: str, locations: list) -> str:
+    random.shuffle(locations)
     content = f"Context: {context}" + json.dumps(locations, indent=2)
     best_generated_json = {"locations": []}
-    num_parallel_requests = 30
+    num_parallel_requests = 50
     
     with ThreadPoolExecutor(max_workers=num_parallel_requests) as executor:
         futures = [executor.submit(generate_response, content) for _ in range(num_parallel_requests)]
@@ -76,7 +79,7 @@ def generate_customization(context: str, locations: list) -> str:
             generated_json = extract_json(response)
             
             if generated_json and "locations" in generated_json:
-                if len(generated_json["locations"]) == 3:
+                if len(generated_json["locations"]) == MAX_LOCATIONS:
                     false_location = True
                     for location in generated_json["locations"]:
                         if "title" in location:
@@ -86,7 +89,7 @@ def generate_customization(context: str, locations: list) -> str:
                     if not false_location:
                         best_generated_json = generated_json
                         break
-                elif best_generated_json["locations"] != 3:
+                elif best_generated_json["locations"] != MAX_LOCATIONS:
                     best_generated_json = generated_json
 
     try:
@@ -96,8 +99,8 @@ def generate_customization(context: str, locations: list) -> str:
             elif "title" in location:
                 location = {"title": location["title"]}
         
-        if len(best_generated_json["locations"]) > 3:
-            best_generated_json["locations"] = best_generated_json["locations"][:3]
+        if len(best_generated_json["locations"]) > MAX_LOCATIONS:
+            best_generated_json["locations"] = best_generated_json["locations"][:MAX_LOCATIONS]
             
     except Exception as e:
         best_generated_json = {}
