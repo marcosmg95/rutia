@@ -72,13 +72,13 @@ body {
   place-content: center;
   align-items: center;
 
+  &.current {
+    background-color: var(--color-4);
+  }
+
   &.completed {
     background-color: var(--color-1);
     color: var(--foreground);
-  }
-
-  &.current {
-    background-color: var(--color-4);
   }
 
   &:not(:last-child)::after {
@@ -98,13 +98,54 @@ body {
 button,
 .btn {
   padding: 0.5em 1em;
+  transition: all 0.2s ease-in;
+
+  &:hover,
+  &:active {
+    transition: all 0.2s ease-out;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    outline-style: none;
+    box-shadow: none;
+    border-color: transparent;
+  }
 }
 
 button.primary,
 .btn.primary {
-  background: var(--primary-color);
+  background-color: var(--primary-color);
   color: var(--light-color);
-  border-radius: 0.5rem;
+
+  &:hover,
+  &:active {
+    background-color: color-mix(
+      in srgb,
+      var(--primary-color),
+      var(--color-3) 40%
+    );
+  }
+}
+
+.btn.check {
+  border: 1px solid color-mix(in srgb, var(--color-5), var(--light-color) 65%);
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-5), var(--color-4) 65%);
+  }
+
+  &:active,
+  &.active {
+    border: 1px solid var(--color-4);
+    background-color: var(--color-4);
+    transition: all 0.2s ease-out;
+  }
+}
+
+label {
+  font-weight: 500;
 }
 
 .form-group {
@@ -124,6 +165,12 @@ button.primary,
 }
 
 footer {
-  font-size: x-small;
+  font-size: small;
   text-align: center;
+  color: color-mix(in srgb, var(--color-5), var(--light-color) 80%);
+
+  .atribucio {
+    font-size: x-small;
+    color: color-mix(in srgb, var(--color-5), var(--light-color) 65%);
+  }
 }
