@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Coordenades, DadesEntrada, Marcador, ResultatAPI } from "./domain";
 
 interface MenuContextType {
@@ -47,6 +47,12 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
     if (step > 0)
       setStep(step - 1);
   }
+
+  useEffect(() => {
+    if (finishLoading) {
+      setFinishLoading(false);
+    }
+  }, [data])
 
   return (
     <MenuContext.Provider value={{

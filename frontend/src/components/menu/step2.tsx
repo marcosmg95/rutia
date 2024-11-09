@@ -5,32 +5,8 @@ import { AudioRecorder } from "@/audio/audioRecorder";
 export default function Step2() {
   const { data, setData, nextStep, setMarkers, firstResults, ambits, setFinishLoading } = useMenuContext();
 
-  const getAddress = async (lat: number, lng: number): Promise<string | null> => {
-    const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=jsonv2`
-    const result = await fetch(url, {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json', }
-    }).then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error("Something went wrong on nominatim API server!");
-      }
-    }).then((response) => {
-      // console.debug('debug', response);
-
-      return response["display_name"];
-    }).catch((error) => {
-      console.error('error', error);
-      return null;
-    });
-
-    return result;
-  };
-
-
   const getLastMarkers = async () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}customization/?clean_key=${Date.now()}`
+    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}customization?clean_key=${Date.now()}`
     const body = {
       context: data.context,
       locations: firstResults,
@@ -53,36 +29,41 @@ export default function Step2() {
     }).then((response) => {
       console.debug('debug', response);
 
-      const marcadors: Marcador[] = response.map(async (r: ResultatAPI) => {
-        let address = null;
-        let field = null;
-        if (r.location?.latitude && r.location?.longitude) {
-          address = await getAddress(r.location?.latitude, r.location?.longitude);
-        }
+      if (!response.locations || response.locations.length === 0) {
+        throw new Error("Something went wrong on API server!");
+      }
 
-        if (r.field === "Ciència") field = ambits.science;
-        if (r.field === "Arts visuals") field = ambits.art;
-        if (r.field === "Història i memòria") field = ambits.history;
+      const titles = Object.keys(response.locations).map((key) => response.locations[key].title);
+      const lastResults = firstResults?.filter((x) => titles.includes(x.title))
 
-        return {
-          code: r.code,
-          nom: r.title,
-          adreca: address,
-          descripcio: r.description,
-          ambit: field,
-          localitzacio: {
-            lat: r.location?.latitude,
-            lng: r.location?.longitude,
+      if (lastResults) {
+
+        const marcadors: Marcador[] = lastResults.map((r: ResultatAPI) => {
+          let field;
+
+          if (r.field === "Ciència") field = ambits.science;
+          if (r.field === "Arts visuals") field = ambits.art;
+          if (r.field === "Història i memòria") field = ambits.history;
+
+          return {
+            code: r.code,
+            nom: r.title,
+            adreca: '',
+            descripcio: r.description,
+            ambit: field || '',
+            localitzacio: {
+              lat: r.location?.latitude,
+              lng: r.location?.longitude,
+            }
           }
-        }
-      })
-      setMarkers(marcadors);
-      setFinishLoading(true);
+        })
+        setMarkers(marcadors);
+        setFinishLoading(true);
+      }
     }).catch((error) => {
       console.error('error', error);
     });
   };
-
 
   const clickGenerar = () => {
     getLastMarkers();

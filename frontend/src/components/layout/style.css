@@ -1,6 +1,10 @@
 .loading {
   color: var(--color-1);
   place-content: center;
+
+  .text {
+    animation: loading-text 1.8s linear infinite;
+  }
 }
 .lds-grid,
 .lds-grid div {
@@ -73,5 +77,15 @@
   }
   50% {
     opacity: 0.5;
+  }
+}
+
+@keyframes loading-text {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.75;
   }
 }
