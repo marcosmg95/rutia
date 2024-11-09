@@ -19,18 +19,19 @@ def retrieve_data_by_field(fields: list, latitude: float = None, longitude: floa
             field_filter |= Filter.by_property("field").equal(field)
 
     if date and date != "":
+        date_filter = True
         # Parse the string into a datetime object
         dt = datetime.strptime(date, '%Y-%m-%d')
 
         # Convert to RFC 3339 format with UTC (Z)
         formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
         formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
-        date_filter = Filter.by_property("date_start").greater_or_equal(
+        date_start_filter = Filter.by_property("date_start").equal(
             formatted
         )
-        date_filter &= Filter.by_property("date_end").less_or_equal(
-            formatted
-        )
+        # date_end_filter = Filter.by_property("date_end").less_or_equal(
+        #     formatted
+        # )
 
         #  # Parse the string into a datetime object
         dt = datetime.strptime("1337-11-03", '%Y-%m-%d')
@@ -38,16 +39,9 @@ def retrieve_data_by_field(fields: list, latitude: float = None, longitude: floa
         # Convert to RFC 3339 format with UTC (Z)
         formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
         formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
-        date_filter |= Filter.by_property("date_start").equal(formatted)
-
+        date_start_filter |= Filter.by_property("date_start").equal(formatted)
     else:
-        # Parse the string into a datetime object
-        dt = datetime.strptime("1337-11-03", '%Y-%m-%d')
-
-        # Convert to RFC 3339 format with UTC (Z)
-        formatted = dt.strftime('%Y-%m-%dT%H:%M:%SZ')
-        formatted = datetime.strptime(formatted, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=timezone.utc)
-        date_filter = Filter.by_property("date_start").equal(formatted)
+        date_filter = None
 
     if latitude and longitude:
         # Combine the field filter with the location filter
@@ -56,18 +50,32 @@ def retrieve_data_by_field(fields: list, latitude: float = None, longitude: floa
                 latitude=latitude,
                 longitude=longitude
             ),
-            distance=500000  # In meters
+            distance=5000  # In meters
         )
     else:
         geo_filter = None
 
+
+    if field_filter and date_filter and geo_filter:
+        filters = field_filter & date_start_filter & geo_filter
+    elif field_filter and date_filter:
+        filters = field_filter & date_start_filter
+    elif field_filter and geo_filter:
+        filters = field_filter & geo_filter
+    elif date_filter and geo_filter:
+        filters = date_start_filter & geo_filter
+    elif field_filter:
+        filters = field_filter
+    elif date_filter:
+        filters = date_start_filter
+    elif geo_filter:
+        filters = geo_filter
+    else:
+        filters = None
+
     # Combine the field filter with the location filter
     near_activities = test_collection.query.fetch_objects(
-        filters=(
-            field_filter &
-            date_filter &
-            geo_filter
-        ),
+        filters=filters,
         limit=10
     )
 
@@ -85,7 +93,8 @@ def retrieve_data_by_field(fields: list, latitude: float = None, longitude: floa
             "location": o.properties['location'],
             "description": o.properties['description'],
             "code": o.properties['code'],
-            "date": o.properties['date_start']
+            "start_date": o.properties['date_start'],
+            "end_date": o.properties['date_end'],
         })
 
     client.close()
