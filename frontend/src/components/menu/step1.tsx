@@ -1,35 +1,38 @@
+import { Coordenades, Marcador, ResultatAPI } from "@/context/domain";
 import { useMenuContext } from "@/context/menuContext";
 import { useState } from "react";
 
 export default function Step1() {
-  const { data, setData, nextStep, ambits } = useMenuContext();
+  const { data, setData, nextStep, ambits, setMarkers, center, setCenter } = useMenuContext();
   const [useCurrentPosition, setUseCurrentPosition] = useState<boolean>(false);
   // const today = new Date().toISOString().substring(0, 10);
 
   const updateCoordinates = (pos: GeolocationPosition) => {
-    setData({ ...data, localitzacio: { lat: pos.coords.latitude, lng: pos.coords.longitude } })
+    setCenter({ lat: pos.coords.latitude, lng: pos.coords.longitude });
+    console.log("update coords", { lat: pos.coords.latitude, lng: pos.coords.longitude });
   };
 
   const showError = (err: GeolocationPositionError) => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   };
 
-  const getCoordinates = async () => {
-    if (!useCurrentPosition && !(data.localitzacio && data.localitzacio.lat && data.localitzacio.lng)) {
+  const getCoordinates = () => {
+    if (!useCurrentPosition) {
+      setUseCurrentPosition(!useCurrentPosition);
+
       const options = {
         enableHighAccuracy: true,
-        timeout: 5000,
         maximumAge: 0,
       };
 
-      await navigator.geolocation.getCurrentPosition(updateCoordinates, showError, options);
+      navigator.geolocation.getCurrentPosition(updateCoordinates, showError, options);
+
     }
-    setUseCurrentPosition(!useCurrentPosition);
   };
 
-  const getCityCoordinates = async () => {
+  const getCityCoordinates = async (): Promise<Coordenades | null> => {
     const url = `https://nominatim.openstreetmap.org/search?city=${data.ciutat}&format=jsonv2`
-    fetch(url, {
+    const result = await fetch(url, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json', }
     }).then((response) => {
@@ -40,13 +43,49 @@ export default function Step1() {
       }
     }).then((response) => {
       // console.debug('debug', response);
-      const newData = { ...data };
-      newData.localitzacio = {
+      const coords = {
         lat: parseFloat(response[0]["lat"]),
         lng: parseFloat(response[0]["lon"]),
+      };
+      setCenter(coords);
+      return coords;
+    }).catch((error) => {
+      console.error('error', error);
+      return null;
+    });
+
+    return result;
+  };
+
+  const getMarkers = async (coords: Coordenades) => {
+    const fields = Object.keys(data.tipus).map((key) => `${key}=${data.tipus[key] ? '1' : '0'}`).join('&')
+    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}field?${fields}&latitude=${coords.lat}&longitude=${coords.lng}`
+
+    fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'ngrok-skip-browser-warning': 'true',
       }
-      setData(newData);
-      console.log(newData)
+    }).then((response) => {
+      if (response.status === 200) {
+        return response.json();
+      } else {
+        throw new Error("Something went wrong on API server!");
+      }
+    }).then((response) => {
+      // console.debug('debug', response);
+
+      const marcadors: Marcador[] = response.map((r: ResultatAPI) => {
+        return {
+          nom: r.title,
+          localitzacio: {
+            lat: r.location?.latitude,
+            lng: r.location?.longitude,
+          }
+        }
+      })
+      setMarkers(marcadors);
     }).catch((error) => {
       console.error('error', error);
     });
@@ -63,10 +102,15 @@ export default function Step1() {
   };
 
   const clickContinue = async () => {
-    nextStep();
-    if (data.ciutat !== '') {
-      await getCityCoordinates();
+    if (useCurrentPosition) {
+      await getMarkers(center);
+    } else if (data.ciutat !== '') {
+      await getCityCoordinates().then((coords) => {
+        if (coords)
+          getMarkers(coords);
+      });
     }
+    nextStep();
   };
 
   return (

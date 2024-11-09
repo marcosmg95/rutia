@@ -1,7 +1,7 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from "react";
-import { Coordenades, DadesEntrada, Marcador, ResultatAPI } from "./domain";
+import { createContext, useContext, useState } from "react";
+import { Coordenades, DadesEntrada, Marcador } from "./domain";
 
 interface MenuContextType {
   data: DadesEntrada
@@ -40,56 +40,6 @@ export const MenuProvider = ({ children }: Readonly<{ children: React.ReactNode 
     if (step > 0)
       setStep(step - 1);
   }
-
-  const getMarkers = async () => {
-    const fields = Object.keys(data.tipus).map((key) => `${key}=${data.tipus[key] ? '1' : '0'}`).join('&')
-    const url = `${process.env.NEXT_PUBLIC_API_URL || ''}field?${fields}&latitude=${data.localitzacio?.lat}&longitude=${data.localitzacio?.lng}`
-
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'ngrok-skip-browser-warning': 'true',
-      }
-    }).then((response) => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error("Something went wrong on API server!");
-      }
-    }).then((response) => {
-      // console.debug('debug', response);
-
-      const marcadors: Marcador[] = response.map((r: ResultatAPI) => {
-        return {
-          nom: r.title,
-          localitzacio: {
-            lat: r.location?.latitude,
-            lng: r.location?.longitude,
-          }
-        }
-      })
-      setMarkers(marcadors);
-    }).catch((error) => {
-      console.error('error', error);
-    });
-  };
-
-  useEffect(() => {
-    if (data.localitzacio) {
-      setCenter(data.localitzacio);
-    }
-  }, [data.localitzacio])
-
-  useEffect(() => {
-    if (step > 0) {
-      getMarkers();
-    }
-
-  }, [center, ambits, step])
-
-
-
 
   return (
     <MenuContext.Provider value={{ data, setData, step, setStep, nextStep, prevStep, ambits, center, setCenter, markers, setMarkers }}>

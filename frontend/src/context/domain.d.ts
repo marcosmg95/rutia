@@ -7,7 +7,6 @@ export interface DadesEntrada {
   dia: string
   ciutat: string
   context: string
-  localitzacio?: Coordenades
   tipus: {
     [key: string]: boolean
   }
