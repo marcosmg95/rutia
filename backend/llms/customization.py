@@ -31,7 +31,7 @@ system_prompt = (
     "    }, ..."
     "  ]"
     "}"
-    "From the following list of places, choose the MAX_LOCATIONS locations "
+    f"From the following list of places, choose the {MAX_LOCATIONS} locations "
     "that match the context the most. And generate a JSON object for them"
 )
 
@@ -69,14 +69,19 @@ def generate_customization(context: str, locations: list) -> str:
     random.shuffle(locations)
     content = f"Context: {context}" + json.dumps(locations, indent=2)
     best_generated_json = {"locations": []}
-    num_parallel_requests = 50
+    num_parallel_requests = 80
     
     with ThreadPoolExecutor(max_workers=num_parallel_requests) as executor:
         futures = [executor.submit(generate_response, content) for _ in range(num_parallel_requests)]
         
         for future in as_completed(futures):
-            response = future.result()
+            response = future.result(timeout=30)
+
+            print(response)
             generated_json = extract_json(response)
+
+            print("="*30)
+            print(generated_json)
             
             if generated_json and "locations" in generated_json:
                 if len(generated_json["locations"]) == MAX_LOCATIONS:
