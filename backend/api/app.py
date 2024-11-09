@@ -36,11 +36,14 @@ def get_data(
     history: int = 0,
     art: int = 0,
     science: int = 0,
+    events: int = 0,
+    date: str = None,
 ):
     field_map = {
         "history": "Història i memòria",
         "art": "Arts visuals",
-        "science": "Ciència"
+        "science": "Ciència",
+        "events": "Events",
     }
 
     selected_fields = []
@@ -51,12 +54,19 @@ def get_data(
         selected_fields.append(field_map["art"])
     if science:
         selected_fields.append(field_map["science"])
+    if events:
+        selected_fields.append(field_map["events"])
     
     if not selected_fields:
         raise HTTPException(status_code=400, detail="No valid fields provided")
 
     # Assuming `retrieve_data_by_field` can handle a list of fields
-    result = retrieve_data_by_field(selected_fields, latitude, longitude)
+    result = retrieve_data_by_field(
+        selected_fields,
+        latitude,
+        longitude,
+        date
+    )
 
     return result
 

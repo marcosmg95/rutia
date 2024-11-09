@@ -98,7 +98,7 @@ export default function Step2() {
 
       if (response.ok) {
         const result = await response.json();
-        setData({ ...data, context: result.text });
+        setData({ ...data, context: result.text.text });
         console.log('Audio sent successfully!');
       } else {
         console.error('Failed to send audio');
