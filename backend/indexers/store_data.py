@@ -60,7 +60,9 @@ def main():
             properties=[
                 Property(name="field", data_type=DataType.TEXT),
                 Property(name="title", data_type=DataType.TEXT),
+                Property(name="description", data_type=DataType.TEXT),
                 Property(name="location", data_type=DataType.GEO_COORDINATES),
+                Property(name="code", data_type=DataType.INT),
             ],
             vectorizer_config=wvc.config.Configure.Vectorizer.none()
         )
@@ -76,10 +78,12 @@ def main():
                     properties={
                         "field": location.get("Ambit", ""),
                         "title": location.get("Nom_Equipament", ""),
+                        "description": location.get("Descripcio", ""),
                         "location": GeoCoordinate(
                             latitude=float(location.get("Latitud", 0)),
                             longitude=float(location.get("Longitud", 0))
-                        )
+                        ),
+                        "code": i
                     },
                 )
             except Exception as e:

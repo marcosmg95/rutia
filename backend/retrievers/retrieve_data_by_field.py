@@ -43,7 +43,9 @@ def retrieve_data_by_field(fields: list, latitude: float, longitude: float):
         result.append({
             "field": o.properties['field'],
             "title": o.properties['title'],
-            "location": o.properties['location']
+            "location": o.properties['location'],
+            "description": o.properties['description'],
+            "code": o.properties['code']
         })
 
     client.close()

@@ -1,10 +1,12 @@
-from typing import Dict
+from typing import Dict, Any
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+import json
 import uvicorn
 
 from backend.indexers import store_data_old
 from backend.retrievers.retrieve_data_by_field import retrieve_data_by_field
+from backend.llms.customization import generate_customization
 
 app = FastAPI()
 
@@ -59,7 +61,22 @@ def get_data(
     return result
 
 
-@app.get()
+@app.post("/customization")
+def customization(data: Dict[str, Any]):
+    # Validate that `data` contains the `context` and `locations` keys
+    if "context" not in data or "locations" not in data:
+        raise HTTPException(status_code=400, detail="Request body must include 'context' and 'locations' keys.")
+    
+    context = data["context"]
+    locations = data["locations"]
+
+    # Further validation on `locations`
+    if not isinstance(locations, list):
+        raise HTTPException(status_code=400, detail="'locations' must be a list of location data.")
+
+    # Process the data, possibly passing it to another function
+    result = generate_customization(context, locations)
+    return result
 
 
 if __name__ == "__main__":

@@ -7,3 +7,6 @@ protobuf
 weaviate-client
 sentence-transformers
 aiohttp==3.10.10
+langchain-huggingface
+python-dotenv
+openai
