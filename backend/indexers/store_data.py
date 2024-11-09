@@ -94,7 +94,9 @@ def main():
                             latitude=float(location.get("Latitud", 0)),
                             longitude=float(location.get("Longitud", 0))
                         ),
-                        "code": i
+                        "code": i,
+                        "date_start": parse_date("1337-11-03"),
+                        "date_end": parse_date("1337-11-03"),
                     },
                 )
             except Exception as e:
@@ -127,7 +129,9 @@ def main():
                             latitude=float(location.get("latitud", 0)),
                             longitude=float(location.get("longitud", 0))
                         ),
-                        "code": i
+                        "code": i,
+                        "date_start": parse_date("1337-11-03"),
+                        "date_end": parse_date("1337-11-03")
                     },
                 )
             except Exception as e:
