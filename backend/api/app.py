@@ -1,12 +1,12 @@
 from typing import Dict, Any
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-import json
 import uvicorn
+from pathlib import Path
 
-from backend.indexers import store_data_old
 from backend.retrievers.retrieve_data_by_field import retrieve_data_by_field
 from backend.llms.customization import generate_customization
+from backend.llms.whisper import get_text_from_audio
 
 app = FastAPI()
 
@@ -77,6 +77,12 @@ def customization(data: Dict[str, Any]):
     # Process the data, possibly passing it to another function
     result = generate_customization(context, locations)
     return result
+
+
+@app.post("/upload_audio")
+async def upload_audio(file: UploadFile = File(...)):
+    text = get_text_from_audio(file.file.read())
+    return {"text": text}
 
 
 if __name__ == "__main__":

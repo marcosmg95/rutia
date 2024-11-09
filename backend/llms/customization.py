@@ -1,3 +1,4 @@
+import time
 import re
 import json
 from openai import OpenAI
@@ -99,7 +100,7 @@ def generate_customization(context: str, locations: list) -> str:
     
     best_generated_json = {}
     
-    for _ in range(25):
+    for _ in range(5):
         # Generate JSON based on specified structure
         response = generate_response(content)
 
@@ -112,6 +113,8 @@ def generate_customization(context: str, locations: list) -> str:
                 break
             else:
                 best_generated_json = generated_json
+
+        time.sleep(5)
     
     try:
         for location in best_generated_json["locations"]:
