@@ -1,4 +1,5 @@
 import { useMenuContext } from "@/context/menuContext";
+import { AudioRecorder } from "@/audio/audioRecorder";
 
 export default function Step2() {
   const { nextStep } = useMenuContext();
@@ -14,7 +15,13 @@ export default function Step2() {
           placeholder=""
         />
       </div>
-      <button className="primary uppercase px-7 self-center mt-auto text-lg" onClick={nextStep}>Generar ruta</button>
+      <AudioRecorder />
+      <button
+        className="primary uppercase px-7 self-center mt-auto text-lg"
+        onClick={nextStep}
+      >
+        Generar ruta
+      </button>
     </>
   )
 }

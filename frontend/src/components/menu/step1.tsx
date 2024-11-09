@@ -145,7 +145,7 @@ export default function Step1() {
           className={`btn check w-full ${useCurrentPosition ? 'active' : ''}`}
           onClick={getCoordinates}
         >
-          Usa la meva localització
+          Utilitza la meva localització
         </button>
       </div>
 
